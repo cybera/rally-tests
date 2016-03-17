@@ -1,0 +1,126 @@
+{
+    "Authenticate.validate_neutron": [
+        {
+            "args": {
+                "repetitions": 2
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ],
+    "NeutronNetworks.create_and_delete_networks": [
+        {
+            "args": {
+                "network_create_args": {}
+            },
+            "context": {
+                "quotas": {
+                    "neutron": {
+                        "network": -1
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 5,
+                "type": "constant"
+            }
+        }
+    ],
+    "NeutronNetworks.create_and_delete_ports": [
+        {
+            "args": {
+                "network_create_args": {},
+                "port_create_args": {},
+                "ports_per_network": 10
+            },
+            "context": {
+                "quotas": {
+                    "neutron": {
+                        "network": -1,
+                        "port": -1
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 5,
+                "type": "constant"
+            }
+        }
+    ],
+    "NeutronNetworks.create_and_delete_routers": [
+        {
+            "args": {
+                "network_create_args": {},
+                "router_create_args": {},
+                "subnet_cidr_start": "192.168.33.0/30",
+                "subnet_create_args": {},
+                "subnets_per_network": 2
+            },
+            "context": {
+                "quotas": {
+                    "neutron": {
+                        "network": -1,
+                        "router": -1,
+                        "subnet": -1
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 5,
+                "type": "constant"
+            }
+        }
+    ],
+    "NeutronNetworks.create_and_delete_subnets": [
+        {
+            "args": {
+                "network_create_args": {},
+                "subnet_cidr_start": "192.168.34.0/30",
+                "subnet_create_args": {},
+                "subnets_per_network": 2
+            },
+            "context": {
+                "quotas": {
+                    "neutron": {
+                        "network": -1,
+                        "subnet": -1
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 5,
+                "type": "constant"
+            }
+        }
+    ]
+}
+

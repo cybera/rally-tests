@@ -1,0 +1,113 @@
+{
+    "Authenticate.keystone": [
+        {
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+
+    "CinderVolumes.list_volumes": [
+        {
+            "args": {
+                "detailed": true
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "volumes": {
+                    "size": 1,
+                    "volumes_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ],
+
+    "GlanceImages.list_images": [
+        {
+            "context": {
+                "images": {
+                    "image_container": "bare",
+                    "image_type": "qcow2",
+                    "image_url": "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img",
+                    "images_per_tenant": 1
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ],
+  "NovaServers.boot_and_delete_server": [
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "force_delete": false,
+                "image": {
+                    "name": "{{image_name}}"
+                }
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+  "NovaServers.list_servers": [
+        {
+            "args": {
+                "detailed": true
+            },
+            "context": {
+                "servers": {
+                    "flavor": {
+                        "name": "m1.tiny"
+                    },
+                    "image": {
+                        "name": "{{image_name}}"
+                    },
+                    "servers_per_tenant": 1
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        }
+    ]
+}

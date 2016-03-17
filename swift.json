@@ -1,0 +1,26 @@
+{
+
+  "SwiftObjects.create_container_and_object_then_delete_all": [
+        {
+            "args": {
+                "objects_per_container": 5,
+                "object_size": 102400
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "roles": [
+                    "admin"
+                ]
+            }
+        }
+    ]
+
+}

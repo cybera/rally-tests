@@ -1,0 +1,66 @@
+{
+    "Authenticate.keystone": [
+        {
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+    "KeystoneBasic.add_and_remove_user_role": [
+        {
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+    "KeystoneBasic.create_and_delete_role": [
+        {
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+    "KeystoneBasic.create_delete_user": [
+        {
+            "args": {
+                "name_length": 10
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+    "KeystoneBasic.create_update_and_delete_tenant": [
+        {
+            "args": {
+                "name_length": 10
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+   ]
+
+}

@@ -1,0 +1,68 @@
+{
+
+  "DesignateBasic.create_and_delete_domain": [
+        {
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 1
+            },
+            "context": {
+                "quotas": {
+                    "designate": {
+                        "domains": 2,
+                        "domain_recordsets": 5,
+                        "domain_records": 20,
+                        "recordset_records": 20
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            }
+        }
+    ],
+   "DesignateBasic.create_and_delete_records": [
+        {
+            "args": {
+                "records_per_domain": 10
+            },
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 1
+            },
+            "context": {
+                "quotas": {
+                    "designate": {
+                        "domains": 2,
+                        "domain_recordsets": 5,
+                        "domain_records": 20,
+                        "recordset_records": 20
+                    }
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            }
+        }
+    ],
+  "DesignateBasic.create_and_delete_server": [
+        {
+            "runner": {
+                "type": "constant",
+                "times": 2,
+                "concurrency": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            }
+        }
+    ]
+
+}

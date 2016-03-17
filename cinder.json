@@ -1,0 +1,130 @@
+{
+
+ "Authenticate.validate_cinder": [
+        {
+            "args": {
+                "repetitions": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+ "CinderVolumes.create_and_attach_volume": [
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "image": {
+                    "name": "{{image_name}}"
+                },
+                "size": 10
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        },
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "image": {
+                    "name": "{{image_name}}"
+                },
+                "size": {
+                    "max": 5,
+                    "min": 1
+                }
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        }
+    ],
+    "CinderVolumes.create_and_delete_volume": [
+        {
+            "args": {
+                "size": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        },
+        {
+            "args": {
+                "size": {
+                    "max": 5,
+                    "min": 1
+                }
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ],
+    "CinderVolumes.list_volumes": [
+        {
+            "args": {
+                "detailed": true
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                },
+                "volumes": {
+                    "size": 1,
+                    "volumes_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ]
+
+}

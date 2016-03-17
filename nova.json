@@ -1,0 +1,130 @@
+{
+
+  "Authenticate.validate_nova": [
+        {
+            "args": {
+                "repetitions": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+ "NovaImages.list_images": [
+        {
+            "args": {
+                "detailed": true
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ],
+    "NovaKeypair.create_and_delete_keypair": [
+        {
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 3,
+                "type": "constant"
+            }
+        }
+    ],
+ "NovaServers.boot_and_delete_server": [
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "force_delete": false,
+                "image": {
+                    "name": "{{image_name}}"
+                }
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+    "NovaServers.boot_and_live_migrate_server": [
+        {
+            "args": {
+                "block_migration": true,
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "image": {
+                    "name": "{{image_name}}"
+                }
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        }
+    ],
+    "NovaServers.list_servers": [
+        {
+            "args": {
+                "detailed": true
+            },
+            "context": {
+                "servers": {
+                    "flavor": {
+                        "name": "m1.tiny"
+                    },
+                    "image": {
+                        "name": "{{image_name}}"
+                    },
+                    "servers_per_tenant": 1
+                },
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        }
+    ]
+
+}

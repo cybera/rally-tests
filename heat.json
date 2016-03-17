@@ -1,0 +1,41 @@
+{
+
+    "Authenticate.validate_heat": [
+        {
+            "args": {
+                "repetitions": 1
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 2,
+                "times": 10,
+                "type": "constant"
+            }
+        }
+    ],
+   "HeatStacks.create_and_delete_stack": [
+        {
+            "args": {
+                "template_path": "templates/default.yaml.template"
+            },
+            "context": {
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 2,
+                "type": "constant"
+            }
+        }
+    ]
+
+}
+

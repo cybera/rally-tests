@@ -1,0 +1,28 @@
+{
+
+  "NovaServers.boot_and_associate_floating_ip": [
+        {
+            "args": {
+                "flavor": {
+                    "name": "m1.tiny"
+                },
+                "image": {
+                    "name": "^cirros.*uec$"
+                }
+            },
+            "context": {
+                "network": {},
+                "users": {
+                    "tenants": 1,
+                    "users_per_tenant": 1
+                }
+            },
+            "runner": {
+                "concurrency": 1,
+                "times": 1,
+                "type": "constant"
+            }
+        }
+    ]
+
+}
